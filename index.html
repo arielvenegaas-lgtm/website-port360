@@ -11,10 +11,49 @@
 <meta property="og:title" content="360 Ports">
 <meta property="og:description" content="Unofficial Xbox 360 homebrew ports — Patrick's Parabox and Sort the Court.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%236cb41c'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23fff' stroke-width='6' stroke-dasharray='80 27' stroke-linecap='round' transform='rotate(-40 32 32)'/%3E%3C/svg%3E">
+<meta property="og:url" content="https://arielvenegaas-lgtm.github.io/website-port360/">
+<meta property="og:image" content="https://arielvenegaas-lgtm.github.io/website-port360/assets/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="360 Ports — Xbox 360 homebrew library">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="360 Ports">
+<meta name="twitter:description" content="Unofficial Xbox 360 homebrew ports — Patrick's Parabox and Sort the Court.">
+<meta name="twitter:image" content="https://arielvenegaas-lgtm.github.io/website-port360/assets/social-card.png">
+<link rel="canonical" href="https://arielvenegaas-lgtm.github.io/website-port360/">
+<link rel="icon" type="image/png" href="assets/xbox360.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600;800&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "360 Ports",
+  "description": "A small library of unofficial Xbox 360 homebrew ports.",
+  "url": "https://arielvenegaas-lgtm.github.io/website-port360/",
+  "hasPart": [
+    {
+      "@type": "VideoGame",
+      "name": "Patrick's Parabox",
+      "author": { "@type": "Person", "name": "Patrick Traynor" },
+      "operatingSystem": "Xbox 360",
+      "applicationCategory": "Game",
+      "genre": "Puzzle"
+    },
+    {
+      "@type": "VideoGame",
+      "name": "Sort the Court",
+      "author": { "@type": "Person", "name": "Graeme Borland" },
+      "operatingSystem": "Xbox 360",
+      "applicationCategory": "Game",
+      "genre": "Simulation"
+    }
+  ]
+}
+</script>
 <style>
 :root{color-scheme:light;box-sizing:border-box}
 *,*::before,*::after{box-sizing:border-box}
@@ -64,10 +103,8 @@ body{
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;min-width:0;color:inherit;text-decoration:none;border-radius:10px}
 .brand:focus-visible{outline:3px solid var(--green);outline-offset:4px}
-.orb{position:relative;flex:0 0 auto;width:46px;height:46px;border-radius:50%;
-  background:radial-gradient(circle at 35% 28%,#e3ffa8 0,var(--green-hi) 22%,var(--green) 55%,var(--green-lo) 100%);
-  box-shadow:0 0 0 2px rgba(255,255,255,.55),0 6px 20px -4px var(--green),inset 0 -6px 10px rgba(0,0,0,.25)}
-.orb::after{content:"";position:absolute;inset:11px;border-radius:50%;border:3px solid rgba(255,255,255,.9);border-top-color:transparent;transform:rotate(-35deg)}
+.brand-mark{flex:0 0 auto;width:48px;height:48px;object-fit:contain;display:block;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.28))}
 .brand b{display:block;font-weight:800;letter-spacing:.16em;font-size:18px;line-height:1.1}
 .brand small{display:block;color:var(--ink2);font-size:13px;letter-spacing:.04em}
 .top-actions{display:flex;align-items:center;gap:12px}
@@ -125,6 +162,8 @@ body{
   background:#111;box-shadow:0 10px 20px -8px var(--shadow),0 0 0 1px rgba(0,0,0,.3)}
 .case-band{flex:0 0 11%;min-height:22px;display:flex;align-items:center;justify-content:space-between;padding:0 9px;
   background:linear-gradient(var(--green-hi),var(--green-lo));color:#0b1a02;font:800 10px/1 var(--font);letter-spacing:.16em}
+.band-plat{display:inline-flex;align-items:center;gap:4px}
+.band-icon{width:13px;height:13px;display:block;flex:0 0 auto}
 .case-art{position:relative;flex:1;display:flex;align-items:flex-end;padding:12px;overflow:hidden;
   background:linear-gradient(155deg,hsl(var(--h,95) 55% 40%),hsl(calc(var(--h,95) + 40) 60% 15%))}
 .case-art::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.3),rgba(255,255,255,0) 42%);pointer-events:none;z-index:1}
@@ -169,6 +208,18 @@ body{
 .chips li.g{color:var(--on-green);background:linear-gradient(var(--green-hi),var(--green));border-color:transparent}
 .desc{margin:0 0 18px;max-width:58ch;white-space:pre-wrap;overflow-wrap:anywhere}
 .actions{display:flex;flex-wrap:wrap;gap:10px}
+.sheet-sub{margin:22px 0 8px;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.shot{position:relative;display:block;aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#000}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+@media (prefers-reduced-motion: no-preference){.shot img{transition:transform .22s ease}}
+@media (hover:hover){.shot:hover img{transform:scale(1.035)}}
+.hash{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.link-btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--green-text);
+  font:600 12px/1 var(--font);padding:6px 10px;border-radius:999px;cursor:pointer}
+.link-btn:hover{background:var(--panel-solid)}
+.link-btn:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 .sheet-x{position:absolute;top:10px;right:10px;z-index:3;appearance:none;width:40px;height:40px;border-radius:50%;
   border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font:300 24px/1 var(--font);cursor:pointer}
 .sheet-x:hover{background:var(--panel)}
@@ -225,6 +276,7 @@ body{
       "bytes": 3517491,
       "url": "games/patricks-parabox-xbox360.zip",
       "cover": "covers/patricks-parabox.webp",
+      "shots": ["shots/parabox-1.webp", "shots/parabox-2.webp", "shots/parabox-3.webp", "shots/parabox-4.webp"],
       "desc": "A recursive puzzle box where every box you push contains another level. This unofficial Xbox 360 port packages the game as an ELF32 build — unzip it, copy the .elf32 to your console, and launch it with your homebrew loader.",
       "tags": ["Puzzle"],
       "added": "2026-10-24",
@@ -237,6 +289,7 @@ body{
       "bytes": 7840299,
       "url": "games/sort-the-court-xbox360.zip",
       "cover": "covers/sort-the-court.webp",
+      "shots": ["shots/stc-1.webp", "shots/stc-2.webp", "shots/stc-3.webp", "shots/stc-4.webp"],
       "desc": "Answer petitions, spend your gold, and try to keep a tiny kingdom happy. This unofficial Xbox 360 port ships as an ELF32 build — unzip the download and launch it on a homebrew-enabled console.",
       "tags": ["Simulation"],
       "added": "2026-10-24",
@@ -283,6 +336,7 @@ body{
       size: bytes ? formatBytes(bytes) : (g.size ? String(g.size).trim() : ''),
       url: safeUrl(g.url),
       cover: safeUrl(g.cover),
+      shots: Array.isArray(g.shots) ? g.shots.map(safeUrl).filter(Boolean) : [],
       desc: g.desc ? String(g.desc).trim() : '',
       author: g.author ? String(g.author).trim() : '',
       tags: Array.isArray(g.tags) ? g.tags.map(function (t) { return String(t).trim(); }).filter(Boolean) : [],
@@ -290,6 +344,8 @@ body{
       sha256: g.sha256 ? String(g.sha256) : ''
     };
   }).filter(function (g) { return g.title && g.url; });
+
+  var totalBytes = games.reduce(function (sum, g) { return sum + (g.bytes || 0); }, 0);
 
   var activeTab = 'games';
   var query = '';
@@ -486,7 +542,7 @@ body{
 
     var header = el('header', { class: 'top' },
       el('a', { class: 'brand', href: './', 'aria-label': '360 Ports home' },
-        el('span', { class: 'orb', 'aria-hidden': 'true' }),
+        el('img', { class: 'brand-mark', src: 'assets/xbox360.png', alt: '', width: '48', height: '48', decoding: 'async' }),
         el('div', {}, el('b', { text: '360 PORTS' }), el('small', { text: 'Xbox 360 homebrew library' }))),
       el('div', { class: 'top-actions' }, clockEl, themeBtn));
 
@@ -576,7 +632,11 @@ body{
       art.append(el('span', { class: 'case-title', text: g.title, dir: 'auto' }));
     }
     return el('span', { class: 'case' },
-      el('span', { class: 'case-band' }, el('span', { text: 'ELF32' }), el('span', { text: 'XBOX 360' })),
+      el('span', { class: 'case-band' },
+        el('span', { text: 'ELF32' }),
+        el('span', { class: 'band-plat' },
+          el('img', { class: 'band-icon', src: 'assets/xbox360.png', alt: '', 'aria-hidden': 'true', loading: 'lazy' }),
+          'XBOX 360')),
       art);
   }
 
@@ -628,7 +688,7 @@ body{
     var panel = el('section', { class: 'panel' },
       el('div', { class: 'panel-head' },
         el('span', { text: 'games' }),
-        el('span', { text: plural(games.length, 'port') })));
+        el('span', { text: plural(games.length, 'port') + (totalBytes ? ' \u00b7 ' + formatBytes(totalBytes) : '') })));
 
     if (!games.length) {
       panel.append(el('div', { class: 'empty' },
@@ -748,13 +808,31 @@ body{
       }, pad('y', 'Y'), 'Share'));
     }
 
+    var shots = g.shots.length ? el('div', {},
+      el('h3', { class: 'sheet-sub', text: 'Screenshots' }),
+      el('div', { class: 'shots' }, g.shots.map(function (src, i) {
+        return el('a', {
+          class: 'shot', href: src, target: '_blank', rel: 'noopener noreferrer',
+          'aria-label': 'Open screenshot ' + (i + 1) + ' for ' + g.title
+        }, el('img', { src: src, alt: '', width: '960', height: '540', loading: 'lazy', decoding: 'async' }));
+      }))) : null;
+
     var details = el('details', { class: 'checks' },
       el('summary', { text: 'File details' }),
       el('dl', {},
         el('dt', { text: 'File' }), el('dd', {}, el('code', { text: fileName(g.url) })),
         el('dt', { text: 'Size' }), el('dd', { text: (g.size || 'Unknown') + (g.bytes ? ' (' + g.bytes.toLocaleString() + ' bytes)' : '') }),
         g.sha256 ? el('dt', { text: 'SHA-256' }) : null,
-        g.sha256 ? el('dd', {}, el('code', { text: g.sha256 })) : null,
+        g.sha256 ? el('dd', { class: 'hash' },
+          el('code', { text: g.sha256 }),
+          el('button', {
+            class: 'link-btn', type: 'button',
+            onclick: function () {
+              copyText(g.sha256).then(function (ok) {
+                toast(ok ? 'SHA-256 copied' : 'Could not copy the checksum.');
+              });
+            }
+          }, 'Copy')) : null,
         el('dt', { text: 'Added' }), el('dd', { text: fmtDate(g.added) || '\u2014' })));
 
     var closeBtn = el('button', { class: 'sheet-x', type: 'button', 'aria-label': 'Close details', onclick: closeSheet }, '\u00d7');
@@ -770,6 +848,7 @@ body{
             chips,
             g.desc ? el('p', { class: 'desc', text: g.desc, dir: 'auto' }) : null,
             actions,
+            shots,
             details))));
 
     sheet.addEventListener('keydown', trapFocus);
